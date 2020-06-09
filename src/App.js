@@ -4,9 +4,13 @@ import {BrowserRouter,Route,Switch,Link} from 'react-router-dom'
 import Home from './components/Home';
 import Cart from './components/Cart';
 import Aboutus from './components/Aboutus';
+import {connect} from 'react-redux';
+import  {addbasket} from '../src/Actions/Addaction';
 
-function App() {
+function App(props) {
+  console.log(props)
   return (
+    
     <BrowserRouter>
     <div>
 <nav>
@@ -16,12 +20,12 @@ function App() {
 
 <li><Link to = "/home">Home</Link></li>
 <li><Link to = "/Aboutus">About us</Link></li>
-<li><i class="fa fa-shopping-cart" aria-hidden="true"><Link to = "/Cart">Cart</Link></i></li>
+  <li><i className="fa fa-shopping-cart" aria-hidden="true"><Link to = "/Cart">Cart</Link></i></li>
 </ul>
 
 </nav>
 <Switch>
-  <Route path="/home" exact> <Home></Home></Route>
+  <Route path="/home" > <Home></Home></Route>
   
   <Route path="/Aboutus"> <Aboutus></Aboutus></Route>
   <Route path="/Cart"><Cart></Cart> </Route>
@@ -30,5 +34,10 @@ function App() {
     </BrowserRouter>
   );
 }
+const MapStateToProps=(state)=>{
+return {
+  basketProps:state.basketState
+}
+}
 
-export default App;
+export default connect(MapStateToProps,{addbasket})(App);

@@ -4,3 +4,22 @@
   justify-content: space-around;
   align-content: flex-end;
 }
+.container{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+}
+.Image{
+  float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+    position: relative;
+}
+.Image:hover .AddToCart{
+  bottom: 58px;
+  opacity: 1;
+  padding: 10px;
+  text-decoration: transparent;
+}
